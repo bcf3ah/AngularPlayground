@@ -1,0 +1,24 @@
+<div style='border: 1px solid black'>
+	<button class='btn btn-primary' [disabled]='!allowServer' (click)="addServer()">Add server</button>
+	<button class='btn btn-secondary' (click)="changeBtnPermission()">Change button permission</button>
+	<button class='btn btn-danger' (click)="serverNumber = 0;">Reset server number</button>
+	<hr>
+	<label>This paragraph uses a ternary conditional with string interpolation</label>
+	<p>{{serverNumber === 0 ? 'No servers yet' : serverNumber}}</p>
+	<hr>
+	<label>This paragraph uses the ngIf directive from Angular instead</label>
+	<p *ngIf='serverNumber>0; else myMarker'>{{serverNumber}}</p>
+	<ng-template #myMarker>
+		<p>No servers yet</p>
+	</ng-template>
+</div>
+<hr>
+<hr>
+<label>This input has one-way binding</label>
+<input class='form-control' type='text' (input)="updateServerName($event)">
+<hr>
+<label>This input has two-way binding</label>
+<input class='form-control' type='text' [(ngModel)]="serverName">
+<hr>
+<p>{{serverName}}</p>
+<app-server *ngFor="let server of serverArray"></app-server>
